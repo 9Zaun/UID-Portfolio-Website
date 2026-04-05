@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects done by Jayanth Jayaprakash">
+  <title>Projects: Jayanth Jayaprakash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <section class="section"
+    style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+    <div class="container">
+      <div class="split">
+        <img src="images/vast_satellite.png" alt="Satellite" class="img-side img-hero"
+          style="position: absolute; top: 0; right: 0; width: 48%; max-width: 1000px; opacity: 0.9;">
+        <div class="split-text">
+          <h1 class="headline">Projects</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="project-grid" id="projectGrid">
+
+    <article class="project-cell" id="p1" style="background-image: url('images/project-ai.png');"
+      onclick="toggleProject(this)">
+      <div class="project-overlay"></div>
+      <div class="project-content">
+        <span class="label">Reinforcement Learning</span>
+        <h2 class="project-title">Autonomous Tactical Agent</h2>
+        <p class="project-summary">Multi-agent RL system for real-time strategic decision-making in adversarial
+          environments.</p>
+        <div class="project-detail">
+          <p>Built a multi-agent reinforcement learning framework that trains autonomous agents to make tactical
+            decisions in competitive environments with limited information. The system uses a custom reward
+            architecture,
+            combining objective completion with survivability heuristics. Agents learn emergent cooperative
+            strategies (flanking, resource denial, feints) without explicit programming. Trained on a custom
+            simulation engine with fog-of-war mechanics, and the system achieves a 74% win rate against scripted
+            baselines
+            after 2M episodes.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-cell" id="p2" style="background-image: url('images/project-defense.png');"
+      onclick="toggleProject(this)">
+      <div class="project-overlay"></div>
+      <div class="project-content">
+        <span class="label">Defense Tech</span>
+        <h2 class="project-title">Sentinel</h2>
+        <p class="project-summary">Low-latency threat classification pipeline for edge-deployed sensor networks.</p>
+        <div class="project-detail">
+          <p>Designed and prototyped a real-time threat classification system built for edge deployment on
+            resource-constrained hardware. The pipeline ingests multi-modal sensor data (such as infrared, acoustic, and
+            RF)
+            and runs inference through a quantized transformer model optimized for sub-10ms latency. Includes a custom
+            alert prioritization layer that reduces false-positive rates by 38% compared to threshold-based baselines.
+            Built with C++ and ONNX Runtime, targeting ARM-based field units.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-cell" id="p3" style="background-image: url('images/project-quantum.png');"
+      onclick="toggleProject(this)">
+      <div class="project-overlay"></div>
+      <div class="project-content">
+        <span class="label">Quantum Communication</span>
+        <h2 class="project-title">Photon</h2>
+        <p class="project-summary">QKD protocol simulator for noise-resilient quantum key distribution over fiber
+          channels.</p>
+        <div class="project-detail">
+          <p>Developed a simulation framework for BB84 and E91 quantum key distribution protocols with realistic noise
+            models- photon loss, detector dark counts, and polarization drift. The simulator benchmarks key generation
+            rates and quantum bit error rates across variable fiber distances (up to 200km). Includes an adaptive basis
+            reconciliation module that improves secure key yield by 22% under high-noise conditions. Written in Python
+            with NumPy-accelerated state evolution and a custom channel model.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-cell" id="p4" style="background-image: url('images/project-systems.png');"
+      onclick="toggleProject(this)">
+      <div class="project-overlay"></div>
+      <div class="project-content">
+        <span class="label">Systems &amp; Tooling</span>
+        <h2 class="project-title">Forge</h2>
+        <p class="project-summary">Compiled DSL for defining and deploying inference graphs on heterogeneous hardware.
+        </p>
+        <div class="project-detail">
+          <p>Built a domain-specific language and compiler toolchain for defining machine learning inference pipelines
+            that target heterogeneous hardware- CPU, GPU, and custom accelerators. Forge programs compile to an
+            intermediate representation, undergo graph-level optimizations (operator fusion, memory planning,
+            scheduling), and emit platform-specific kernels. The runtime handles dynamic batching and zero-copy tensor
+            passing between execution units. Early benchmarks show 2.3× throughput improvement over hand-written CUDA
+            pipelines for common vision models.</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <script>
+    function toggleProject(cell) {
+      const grid = document.getElementById('projectGrid');
+      const isActive = cell.classList.contains('active');
+
+      // If clicking the active cell, close it
+      if (isActive) {
+        cell.classList.remove('active');
+        grid.classList.remove('has-active');
+        return;
+      }
+
+      // Close any previously active cell
+      const prev = grid.querySelector('.project-cell.active');
+      if (prev) prev.classList.remove('active');
+
+      // Expand the clicked cell
+      cell.classList.add('active');
+      grid.classList.add('has-active');
+    }
+  </script>
+
+</body>
+
+</html>
